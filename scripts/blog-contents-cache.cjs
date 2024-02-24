@@ -10,27 +10,27 @@ const getAllPages = async () => {
     database_id: process.env.DATABASE_ID,
     filter: process.env.DRAFT_PREVIEW
       ? {
-        property: 'DraftPreview',
-        checkbox: {
-          equals: true,
-        },
-      }
+          property: 'DraftPreview',
+          checkbox: {
+            equals: true,
+          },
+        }
       : {
-        and: [
-          {
-            property: 'Published',
-            checkbox: {
-              equals: true,
+          and: [
+            {
+              property: 'Published',
+              checkbox: {
+                equals: true,
+              },
             },
-          },
-          {
-            property: 'Date',
-            date: {
-              on_or_before: new Date().toISOString(),
+            {
+              property: 'Date',
+              date: {
+                on_or_before: new Date().toISOString(),
+              },
             },
-          },
-        ],
-      },
+          ],
+        },
   };
 
   let results = [];
